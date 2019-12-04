@@ -3,12 +3,13 @@ import { useSelector, connect } from 'react-redux'
 import { navigate } from '@reach/router';
 import { Button, Input, Form, Icon, message } from 'antd';
 import { Container, Title, FormContainer, InputContainer, RegisterButton, Text, TextLink } from './styles';
-import { authenticate, register } from '../../redux/actions/user';
+import { authenticate, register, clearError } from '../../redux/actions/user';
 
 const bindConnection = Component => {
     return connect(null, {
         authenticate,
-        register
+        register,
+        clearError
     })(Component);
 }
 
@@ -20,16 +21,19 @@ const RegisterField = (props) => {
     const { error } = useSelector(state => state.user);
 
     const [state, setState] = useState({
-        name: 'tony',
-        email: 'tony@email.com',
-        password: '12345678',
-        passwordConfirmation: '12345678',
+        name: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
         confirmDirty: ''
     })
 
-    useEffect(()=>{
-        if(error)
+    useEffect(() => {
+        console.error(error)
+        if (error){
             message.error(error)
+            props.clearError()
+        }
     }, [error])
 
     useEffect(() => {

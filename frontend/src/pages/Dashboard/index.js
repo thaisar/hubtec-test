@@ -114,7 +114,6 @@ const Dashboard = (props) => {
     }
 
     const handleLogout = () => {
-        localStorage.removeItem("token")
         props.logout()
         navigate("/")
     }

@@ -28,7 +28,7 @@ export default ({ email, password }) => async dispatch => {
   catch(err) {
     console.log(err.response)
     const errorMessage = 'oi'
-    
+    console.log(err.response.data)
     dispatch({ 
       type: USER_AUTHENTICATE_FAILURE, 
       payload: err.response.data

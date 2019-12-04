@@ -7,7 +7,10 @@ import {
     USER_CREATE_SUCCESS,
     USER_LOGOUT,
     USER_LOGOUT_FAILURE,
-    USER_LOGOUT_SUCCESS
+    USER_LOGOUT_SUCCESS,
+    USER_CLEAR_ERROR,
+    USER_CLEAR_ERROR_FAILURE,
+    USER_CLEAR_ERROR_SUCCESS
 } from '../actionTypes'
 
 const initialState = {
@@ -22,6 +25,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case USER_CLEAR_ERROR: {
+            return {
+                ...state,
+                error: ''
+            }
+        }
         case USER_AUTHENTICATE: {
             return {
                 ...state,

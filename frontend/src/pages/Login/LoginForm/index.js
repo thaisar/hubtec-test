@@ -17,8 +17,8 @@ const LoginFields = (props) => {
     const { isAuthenticated, authenticating } = useSelector(state => state.user)
 
     const [state, setState] = useState({
-        email: 'tony@email.com1',
-        password: '12345678'
+        email: '',
+        password: ''
     });
 
     useEffect(()=>{
@@ -40,7 +40,6 @@ const LoginFields = (props) => {
         props.form.validateFields((err, values) => {
             if (!err) {
                 props.authenticate(state)
-                // navigate('/visualizar');
             }
         });
     };

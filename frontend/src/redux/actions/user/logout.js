@@ -11,9 +11,10 @@ import {
 export default (body) => async dispatch => {
   try {
     dispatch({ type: USER_LOGOUT })
-
+    console.log({ token: localStorage.getItem("token")});
     const response = await axios.delete(`${API.url}logout`, {headers: { token: localStorage.getItem("token")}})
 
+    localStorage.removeItem("token")
     dispatch({ 
       type: USER_LOGOUT_SUCCESS
     })
