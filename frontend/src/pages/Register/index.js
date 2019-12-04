@@ -57,8 +57,9 @@ const RegisterField = (props) => {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
+                if (state.password.length < 6 || state.passwordConfirmation.length < 6 )
+                    return message.error("password must be bigger than 6")
                 props.register(state)
-                // navigate('/visualizar');
             }
         });
     };

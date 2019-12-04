@@ -94,6 +94,7 @@ export default function (state = initialState, action) {
         case USER_LOGOUT_SUCCESS: {
             return {
                 ...state,
+                error: '',
                 isAuthenticated: false,
             }
         }
